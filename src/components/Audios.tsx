@@ -2,7 +2,7 @@ import { useGetAllAudios } from "@/hooks/queries/useAudios";
 import { useDownloadAudio } from "@/hooks/mutations/useDownloads";
 import { Ellipsis, Heart, Mic, Pause, Play, Plus } from "lucide-react";
 import { useRef, useState } from "react";
-import type { Audio, DownloadsData } from "@/types";
+import type { Audio } from "@/types";
 import { Button } from "@/components/ui/button";
 import WavesurferPlayer from "@wavesurfer/react";
 import {
@@ -17,7 +17,7 @@ export function Audios() {
   console.log(audios);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentAudio, setCurrentAudio] = useState<Audio>();
-  const [wavesurfer, setWavesurfer] = useState(null);
+
   const [durations, setDurations] = useState<Record<string, string>>({});
   //create single ref
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -31,16 +31,16 @@ export function Audios() {
     }
   };
 
-  const handlePause = (audio: Audio) => {
+  const handlePause = () => {
     if (audioRef.current && isPlaying) {
       setIsPlaying(false);
       audioRef.current.pause();
     }
   };
-  const onReady = (ws) => {
-    setWavesurfer(ws);
-    setIsPlaying(false);
-  };
+  // const onReady = (ws) => {
+  //   setWavesurfer(ws);
+  //   setIsPlaying(false);
+  // };
   const handleDownload = async (audio: Audio) => {
     await downloadAudio(audio._id);
     window.open(audio.url);
@@ -64,7 +64,7 @@ export function Audios() {
               <div>
                 {isPlaying && currentAudio?._id === audio._id ? (
                   <Button
-                    onClick={() => handlePause(audio)}
+                    onClick={() => handlePause()}
                     className="h-14 w-14 rounded-full bg-muted text-muted-foreground p-0 flex items-center justify-center"
                   >
                     <Pause className="h-9 w-9 " />
@@ -99,7 +99,7 @@ export function Audios() {
                 width={200}
                 waveColor="white"
                 url={audio.url}
-                onReady={onReady}
+                // onReady={onReady}
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
               />
@@ -155,6 +155,3 @@ export function Audios() {
     </div>
   );
 }
-// mutation to downloads, send the currentid of the audio that wanys to be  downloaded,
-// check if user has not downloaded the id before,
-// if no create the download, add the no of points the download cost

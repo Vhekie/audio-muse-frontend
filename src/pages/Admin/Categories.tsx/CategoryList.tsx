@@ -1,5 +1,5 @@
 import { DashboardLayout } from "@/components/Layout";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Modal } from "@/components/ui/modal";
@@ -28,12 +28,17 @@ const CategoryList = () => {
   const categorySchema = yup
     .object()
     .shape({
-      name: yup.string(),
-      description: yup.string(),
+      name: yup.string().required(),
+      description: yup.string().required(),
     })
     .required();
 
-  const methods = useForm<Category>({
+  type CategoryInput = {
+    name: string;
+    description: string;
+  };
+
+  const methods = useForm<CategoryInput>({
     resolver: yupResolver(categorySchema),
     defaultValues: { name: category?.name, description: category?.description },
   });

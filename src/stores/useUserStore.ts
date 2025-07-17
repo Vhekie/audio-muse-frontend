@@ -13,7 +13,7 @@ type State = {
   changePassword: (data: ChangePasswordData) => Promise<void>;
 };
 
-export const useUserStore = create<State>((set, get) => ({
+export const useUserStore = create<State>((set) => ({
   user: null,
   checkingAuth: true,
   signup: async (data: UserData) => {

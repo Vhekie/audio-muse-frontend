@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { AudioUploadForm } from "./AudioUpload";
 import { DashboardLayout } from "@/components/Layout";
 import { Modal } from "@/components/ui/modal";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { useGetAllCreatorAudios } from "@/hooks/queries/useAudios";
 import { Play, Pause, Mic, Heart, Ellipsis, Plus } from "lucide-react";
 import type { Audio } from "@/types";
@@ -18,8 +18,8 @@ export function AudioPage() {
   const [openModal, setOpenModal] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentAudio, setCurrentAudio] = useState<Audio>();
-  const [wavesurfer, setWavesurfer] = useState(null);
-  const [duration, setDuration] = useState<number | null>(null);
+  // const [wavesurfer, setWavesurfer] = useState(null);
+  // const [duration, setDuration] = useState<number | null>(null);
   const [durations, setDurations] = useState<Record<string, string>>({});
 
   //create single ref
@@ -34,16 +34,16 @@ export function AudioPage() {
     }
   };
 
-  const handlePause = (audio: Audio) => {
+  const handlePause = () => {
     if (audioRef.current && isPlaying) {
       setIsPlaying(false);
       audioRef.current.pause();
     }
   };
-  const onReady = (ws) => {
-    setWavesurfer(ws);
-    setIsPlaying(false);
-  };
+  // const onReady = (ws) => {
+  //   setWavesurfer(ws);
+  //   setIsPlaying(false);
+  // };
 
   return (
     <DashboardLayout>
@@ -93,7 +93,7 @@ export function AudioPage() {
               <div>
                 {isPlaying && currentAudio?._id === audio._id ? (
                   <Button
-                    onClick={() => handlePause(audio)}
+                    onClick={() => handlePause()}
                     className="h-14 w-14 rounded-full bg-muted text-muted-foreground p-0 flex items-center justify-center"
                   >
                     <Pause className="h-9 w-9 " />
@@ -128,7 +128,7 @@ export function AudioPage() {
                 width={200}
                 waveColor="white"
                 url={audio.url}
-                onReady={onReady}
+                // onReady={onReady}
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
               />

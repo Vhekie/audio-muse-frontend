@@ -11,7 +11,7 @@ export const useGetAllCreatorAudios = () => {
     },
   });
 };
-export const useGetAllAudios = (search: string) => {
+export const useGetAllAudios = (search?: string) => {
   return useQuery<Audio[]>({
     queryKey: ["allAudios", search],
     queryFn: async () => {
