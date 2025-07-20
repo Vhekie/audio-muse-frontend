@@ -11,7 +11,7 @@ export function SectionEight() {
   const navigate = useNavigate();
   return (
     <div className="bg-white m-full  ">
-      <div className=" hidden flex  items-center  md:flex-row justify-between ">
+      <div className=" hidden md:flex  items-center  md:flex-row justify-between ">
         <div>
           <img className="p-4" src="/Header Logo.png" />
         </div>
