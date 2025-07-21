@@ -16,6 +16,7 @@ import { useUserStore } from "@/stores/useUserStore";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Separator } from "@radix-ui/react-separator";
 import type { LoginData } from "@/types";
+import { ArrowUpRight } from "lucide-react";
 
 export function LoginForm({
   className,
@@ -61,27 +62,33 @@ export function LoginForm({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={className} {...props}>
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col space-x-6 justify-center ">
         <Card>
           <CardHeader>
-            <CardTitle className="text-2xl">Welcome Back, Login</CardTitle>
-            <CardDescription className="flex flex-col md:flex-row gap-2">
+            <img src="audiomuselogo.png" className="w-[143px] h-[34px] mb-8" />
+            <CardTitle className="text-2xl md:text-4xl">
+              Welcome Back, Login
+            </CardTitle>
+            <CardDescription className="flex flex-col md:flex-row gap-2 mb-4 font-light text-white">
               <p> Don't have an AudioMuse Account?</p>
-
-              <Link to="/signup" className="underline underline-offset-4">
-                Create an account
-              </Link>
+              <div className="flex font-bold">
+                <Link to="/signup" className="underline underline-offset-4">
+                  Create an account
+                </Link>
+                <ArrowUpRight className="h-4 w-4 mt-1" />
+              </div>
             </CardDescription>
           </CardHeader>
           <CardContent>
             <div>
               <div className="flex flex-col gap-6">
-                <div className="grid gap-2">
+                <div className="grid gap-2  ">
                   <Label htmlFor="email">Email or Username</Label>
                   <Input
+                    className="rounded-full"
                     id="email"
                     type="text"
-                    placeholder="m@example.com"
+                    placeholder="me@example.com"
                     {...register("email")}
                   />
                   {errors.email?.message && <p>{errors.email?.message}</p>}
@@ -91,6 +98,7 @@ export function LoginForm({
                     <Label htmlFor="password">Password</Label>
                   </div>
                   <Input
+                    className="rounded-full"
                     id="password"
                     type="password"
                     {...register("password")}
@@ -98,14 +106,14 @@ export function LoginForm({
                   {errors.password?.message && (
                     <p>{errors.password?.message}</p>
                   )}
-                  <div className="flex md:items-center justify-between gap-2 md:gap-0">
+                  <div className="flex md:items-center justify-between gap-2 md:gap-0 mb-6">
                     <div className="flex items-center gap-3">
                       <Checkbox id="rememberMe" />
                       <Label htmlFor="rememberMe">Remember Me</Label>
                     </div>
                     <Link
                       to="/signup"
-                      className=" text-sm underline-offset-4 underline"
+                      className=" text-xs font-light underline-offset-4 underline"
                     >
                       Forgot your password?
                     </Link>
@@ -119,13 +127,14 @@ export function LoginForm({
                   <span className="items-center text-xs">or</span>
                   <Separator className=" bg-gray-300 h-px w-1/2 " />
                 </div>
-
-                <Button className="w-full rounded-full bg-white text-black">
-                  Continue with Google
-                </Button>
-                <Button className="w-full rounded-full bg-white text-black">
-                  Continue with Apple
-                </Button>
+                <div className="flex flex-col space-y-6 ">
+                  <Button className="w-full rounded-full bg-white text-black">
+                    Continue with Google
+                  </Button>
+                  <Button className="w-full rounded-full bg-white text-black ">
+                    Continue with Apple
+                  </Button>
+                </div>
               </div>
             </div>
           </CardContent>
