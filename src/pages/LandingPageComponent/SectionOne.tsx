@@ -78,10 +78,10 @@ export function SectionOne() {
         </div>
       </div>
       {/* 4 */}
-      <div className=" w-full md:flex items-center  ">
-        <img src="image 10.png" className="-mr-12 hidden md:inline " />
-        <img src="image 11.png" className="-mr-14 " />
-        <img src="image 9.png" className="hidden md:inline " />
+      <div className=" w-full m-auto md:flex ">
+        <img src="image 10.png" className="-mr-16 hidden md:inline w-full " />
+        <img src="image 11.png" className="-mr-24 w-full" />
+        <img src="image 9.png" className="hidden md:inline  w-full" />
       </div>
     </div>
   );

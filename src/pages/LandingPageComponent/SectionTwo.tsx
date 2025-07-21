@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 export function SectionTwo() {
   const navigate = useNavigate();
   return (
-    <div className="bg-[url('/Section2bground.png')] w-[100%] h-[100%] py-10">
+    <div className="bg-[url('/Section2bground.png')] w-[100%] h-[100%] py-22">
       <div className="">
         <p className="text-2xl font-bold md:text-5xl text-center ">
           Sound for every type of content.
@@ -12,7 +12,7 @@ export function SectionTwo() {
         <p className="text-2xl font-bold md:text-5xl text-center ">
           Across all platforms.
         </p>
-        <p className="text-sm  md:text-2xl text-center mt-4">
+        <p className="text-sm font-thin md:text-2xl text-center mt-4">
           Designed to make your editing easier than ever.
         </p>
       </div>

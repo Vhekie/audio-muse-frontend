@@ -11,27 +11,30 @@ export function SectionFive() {
         </div>
         <div></div>
       </div>
-      <div className="flex space-x-2 mb-16">
-        <div className="flex-col space-y-2">
-          <img src="Taylor.png" />
+      <div className="grid grid-cols-3 gap-4 mb-16 w-full">
+        {/* <div className="flex flex-col space-y-2 w-full">
+          <img src="Taylor.png" className="w-full object-cover" />
           <p className="text-left ">Taylor Swift</p>
-        </div>
-        <div className="flex-col space-y-2">
-          <img src="Wizkid.png" />
+        </div> */}
+        <div className="flex flex-col space-y-2 w-full">
+          <img src="Wizkid.png" className="w-full object-cover" />
           <p className="text-center">Wizkid</p>
         </div>
-        <div className="flex-col space-y-2">
-          <img src="Beyonce.png" />
+        <div className="flex flex-col space-y-2 w-full">
+          <img src="Beyonce.png" className="w-full object-cover" />
           <p className="text-center">Beyoncé</p>
         </div>
-        <div className="flex-col space-y-2">
-          <img src="Ruth.png" />
+        <div className="flex flex-col space-y-2 w-full">
+          <img src="Ruth.png" className="w-full object-cover" />
           <p className="text-center">Ruth B</p>
         </div>
-        <div className="flex-col space-y-2">
-          <img src="Drake.png" />
+        {/* <div className="flex flex-col space-y-2 w-full ">
+          <img
+            src="Drake.png"
+            className="w-[587.2px] h-[485.42px] object-cover"
+          />
           <p className="text-right">Drake</p>
-        </div>
+        </div> */}
       </div>
     </div>
   );

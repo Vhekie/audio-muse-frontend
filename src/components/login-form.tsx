@@ -53,7 +53,7 @@ export function LoginForm({
       navigate("/dashboard");
     }
     if (user?.role === "admin") {
-      navigate("/admin/dashboard");
+      navigate("/dashboard");
     }
 
     console.log("navigate success");
